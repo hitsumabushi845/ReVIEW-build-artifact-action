@@ -8,4 +8,5 @@
 
 echo "Run Initialization and build step"
 cd $INPUT_TARGET_DIR && bundle install && npm install && npm run pdf
+gs -q -r600 -dNOPAUSE -sDEVICE=pdfwrite -o "./articles/$(yq -r '.bookname' articles/config.yml)-GrayScale.pdf" -dPDFSETTINGS=/prepress -dOverrideICC -sProcessColorModel=DeviceGray -sColorConversionStrategy=Gray -sColorConversionStrategyForImage=Gray -dGrayImageResolution=600 -dMonoImageResolution=600 -dColorImageResolution=600 "./articles/$(yq -r '.bookname' ./articles/config.yml).pdf" 
 echo "Finish build step"
