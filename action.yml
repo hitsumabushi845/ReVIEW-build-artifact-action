@@ -14,10 +14,18 @@ inputs:
         description: directory of the build target. If you use Review-template, you don't need to change it.
         required: false
         default: ./
+    article_root_dir:
+        description: directory of the build target. If you use Review-template, you don't need to change it.
+        required: false
+        default: ./articles
     config_file:
         description: "Re:VIEW's build configuration file name (don't include directory path)"
         required: false
         default: config.yml  
+    ebook_config_file:
+        description: "Re:VIEW's build configuration file name (don't include directory path)"
+        required: false
+        default: config-ebook.yml
     format:
         description: Output file format. Please choose from PDF, EPUB, HTML.
         required: false
