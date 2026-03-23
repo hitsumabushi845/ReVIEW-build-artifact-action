@@ -65,6 +65,7 @@ TODO
 
 |  パラメータ  |  説明  | 利用例 |
 | :---- | :---- | :---- |
-|  `target_dir`  |  ビルド対象があるディレクトリ（未指定の場合は `./` を利用する） | あとで書く | 
+|  `target_dir`  |  ビルド対象があるディレクトリ（未指定の場合は `./` を利用する） | あとで書く |
 |  `config_file`  |  Configファイル名を指定する（未指定の場合は `config.yml` を利用する） | 未サポート。今後実装されます |
 | `format` | 出力フォーマットを（PDF,EPUB,HTML）から指定 | 未サポート。今後実装されます |
+| `local_pip_packages` | インストールするローカルPythonパッケージのパスをカンマ区切りで指定（例: `./my-lexer,./another-lexer`） | `local_pip_packages: "./my-pygments-lexer"` |
