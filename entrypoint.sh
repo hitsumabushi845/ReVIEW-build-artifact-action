@@ -6,6 +6,17 @@
 
 # TODO Enable env paramaters that only INPUT_TARGET_DIR works well.
 
+if [ -n "${INPUT_LOCAL_PIP_PACKAGES}" ]; then
+  echo "Installing local pip packages..."
+  echo "${INPUT_LOCAL_PIP_PACKAGES}" | tr ',' '\n' | while read -r pkg_path; do
+    pkg_path=$(echo "$pkg_path" | xargs)
+    if [ -n "$pkg_path" ]; then
+      echo "Installing: $pkg_path"
+      pip install --break-system-packages "$pkg_path"
+    fi
+  done
+fi
+
 echo "Run Initialization and build step"
 cd $INPUT_TARGET_DIR && bundle install && npm install && npm run pdf
 gs -q -r600 -dNOPAUSE -sDEVICE=pdfwrite -o "./articles/$(yq -r '.bookname' $INPUT_ARTICLE_ROOT_DIR/$INPUT_CONFIG_FILE)-GrayScale.pdf" -dPDFSETTINGS=/prepress -dOverrideICC -sProcessColorModel=DeviceGray -sColorConversionStrategy=Gray -sColorConversionStrategyForImage=Gray -dGrayImageResolution=600 -dMonoImageResolution=600 -dColorImageResolution=600 "./articles/$(yq -r '.bookname' ./articles/config.yml).pdf"

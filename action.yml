@@ -30,6 +30,10 @@ inputs:
         description: Output file format. Please choose from PDF, EPUB, HTML.
         required: false
         default: PDF
+    local_pip_packages:
+        description: "Comma-separated paths to local Python packages to install (e.g., './my-lexer,./another-lexer')"
+        required: false
+        default: ""
 
 runs:
     using: docker
